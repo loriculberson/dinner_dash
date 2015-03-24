@@ -3,7 +3,6 @@ require 'twilio-ruby'
 class TwilioNotifier
   def initialize(order)
     @order = order
-    
   end
 
   def ordered_item_titles
@@ -14,7 +13,7 @@ class TwilioNotifier
     client.messages.create(
       from: '+19495372518',
       to: '+16082392471',
-      body: "Thank you for placing an order at Clamorous. Your #{ordered_item_titles} are being prepared by our expert chefs and will be delivered shortly. Your total is $#{@order.order_total_cost.round(2)}, our delivery team accepts all major credit cards."
+      body: "Thank you for placing an order at Clamorous. Your #{ordered_item_titles} are being prepared by our expert chefs and will be delivered shortly. Your total is $#{@order.order_total_cost.round(2)}. We accept all major credit cards."
     )
   end
 
