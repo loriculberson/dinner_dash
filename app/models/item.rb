@@ -10,16 +10,9 @@ class Item < ActiveRecord::Base
   scope :active, -> { where(item_status_id: 1) }
   has_attached_file   :image, 
                       styles: { large: "500x340>", medium: "250x170>", thumb: "100x100>" }, 
-                      default_url: "http://www.espinaler.com/wp-content/uploads/almeja-blanca.png",
-                      :storage => :s3,
-                      :s3_credentials => {
-                        :bucket => ENV['S3_BUCKET_NAME'],
-                        :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-                        :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-                      }
+                      default_url: "http://www.espinaler.com/wp-content/uploads/almeja-blanca.png"
 
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
-  # validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
   def price_in_dollars
     if price.nil?
