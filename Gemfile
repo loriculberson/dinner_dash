@@ -20,6 +20,7 @@ gem 'autoprefixer-rails'
 gem 'rails_12factor', group: :production
 gem 'd3_rails'
 gem 'twilio-ruby', '~> 3.12'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug'
