@@ -44,12 +44,4 @@ describe "the admin item view", type: :feature do
     expect(page).to have_content('Racoon Ragu')
     expect(current_path). to eq(admin_item_path(@item))
   end
-
-  it "can delete an item" do
-    expect(Item.count).to eq(1)
-    visit admin_item_path(@item)
-    click_link_or_button("Delete")
-    expect(Item.count).to eq(0)
-  end
-
 end

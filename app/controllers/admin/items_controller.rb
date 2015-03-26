@@ -39,11 +39,6 @@ class Admin::ItemsController < AdminController
     end
   end
 
-  def destroy
-    @item.destroy
-    redirect_to admin_items_path
-  end
-
   private
   def set_item
     @item = Item.find(params[:id])
