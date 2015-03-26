@@ -14,7 +14,6 @@ RSpec.describe "the admins order view", type: :feature do
     fill_in("session_password", with: @admin.password)
     click_button 'Sign in'
     click_link_or_button "List Orders"
-      save_and_open_page
   end
 
   it "displays all the orders on the admin orders index page" do
