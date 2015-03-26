@@ -6,8 +6,12 @@
       <%= status.orders.count %>
     </div>
    <% end %>
-<%= link_to "All Orders", admin_orders_path %>
 
+    <div class="status">
+      <%= link_to "All Orders", admin_orders_path %>
+    </div>
+
+<h5> Transactions displayed in reverse chronological order </h5>
 <table class="" border ="1">
   <tr>
     <th class="medium-column">Order ID</th>

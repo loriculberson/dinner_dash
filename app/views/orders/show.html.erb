@@ -16,12 +16,11 @@
     <th class="money">Subtotal</th>
   </tr>
   <% @order.order_items.each do |order_item| %>
-
-    <td><%= link_to order_item.item.title, item_path(order_item.item_id)%></td>
-    <td class="small-column"><%= order_item.quantity %></td>
-    <td class="money"><%= number_to_currency(order_item.item.price_in_dollars) %></td>
-    <td class="money"><%= number_to_currency(order_item.item_subtotal) %></td>
-  </tr>
+      <td><%= link_to order_item.item.title, item_path(order_item.item_id)%></td>
+      <td class="small-column"><%= order_item.quantity %></td>
+      <td class="money"><%= number_to_currency(order_item.item.price_in_dollars) %></td>
+      <td class="money"><%= number_to_currency(order_item.item_subtotal) %></td>
+    </tr>
   <% end %>
   <tr>
     <td></td>

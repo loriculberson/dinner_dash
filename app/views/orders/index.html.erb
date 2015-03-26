@@ -1,15 +1,16 @@
-<h3>My Orders</h3>
+<h1>My Orders</h1>
+<h5> Transactions displayed in reverse chronological order </h5>
 
 <table border ="1">
   <tr>
-    <th>Order ID</th>
+    <th class="medium-column">Order ID</th>
     <th>Status</th>
     <th class="money">Cost</th>
     <th>Order Details</th>
   </tr>
-  <% current_user.orders.each do |order| %>
+  <% @orders.each do |order| %>
     <tr>
-      <td><%= order.id %></td>
+      <td class="medium-column"><%= order.id %></td>
       <td><%= order.order_status %></td>
       <td class="money"><%= number_to_currency(order.order_total_cost) %> </td>
       <td><%=link_to "Details", order_path(order), class: "btn btn-details float-left" %></td>
