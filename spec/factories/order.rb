@@ -24,4 +24,5 @@ FactoryGirl.define do
       create :status
     end
   end
+
 end

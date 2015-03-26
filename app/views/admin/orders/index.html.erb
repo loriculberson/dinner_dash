@@ -23,39 +23,42 @@
   </tr>
   <% @orders.each do |order| %>
     <tr>
-      <td class="medium-column"><%= order.id %>
-      <td><%= order.user_full_name %>
-      <td><%= order.order_status %></td>
-      <td class="money"><%= number_to_currency(order.order_total_cost) %> </td>
-      <td class="large-column"><%=link_to "Details", order, class: "btn btn-details float-left" %>
+      <% if order.order_total_cost > 0 %>
+        <td class="medium-column"><%= order.id %></td>
+        <td><%= order.user_full_name %></td>
+        <td><%= order.order_status %></td>
+        <td class="money"><%= number_to_currency(order.order_total_cost) %> </td>
+        <td class="large-column"><%=link_to "Details", order, class: "btn btn-details float-left" %>
 
-      <% if order.order_status == "Paid" %>
-        <%= form_for(order, url: admin_order_path(order)) do |f| %>
-          <%= f.hidden_field :status_id, value: 4 %>
-          <%= f.submit "Completed", class: "btn btn-success float-left" %>
-        <% end %>
+        <% if order.order_status == "Paid" %>
+          <%= form_for(order, url: admin_order_path(order)) do |f| %>
+            <%= f.hidden_field :status_id, value: 4 %>
+            <%= f.submit "Completed", class: "btn btn-success float-left" %>
+          <% end %>
 
-        <%= form_for(order, url: admin_order_path(order)) do |f| %>
-          <%= f.hidden_field :status_id, value: 3 %>
-          <%= f.submit "Cancel", class: "btn btn-danger float-left" %>
-        <% end %>
+          <%= form_for(order, url: admin_order_path(order)) do |f| %>
+            <%= f.hidden_field :status_id, value: 3 %>
+            <%= f.submit "Cancel", class: "btn btn-danger float-left" %>
+          <% end %>
 
 
-      <% elsif order.order_status == "Ordered" %>
-        <%= form_for(order, url: admin_order_path(order)) do |f| %>
-          <%= f.hidden_field :status_id, value: 2 %>
-          <%= f.submit "Paid", class: "btn btn-success float-left" %>
-        <% end %>
+        <% elsif order.order_status == "Ordered" %>
+          <%= form_for(order, url: admin_order_path(order)) do |f| %>
+            <%= f.hidden_field :status_id, value: 2 %>
+            <%= f.submit "Paid", class: "btn btn-success float-left" %>
+          <% end %>
 
-        <%= form_for(order, url: admin_order_path(order)) do |f| %>
-          <%= f.hidden_field :status_id, value: 3 %>
-          <%= f.submit "Cancel", class: "btn btn-danger float-left" %>
-        <% end %>
+          <%= form_for(order, url: admin_order_path(order)) do |f| %>
+            <%= f.hidden_field :status_id, value: 3 %>
+            <%= f.submit "Cancel", class: "btn btn-danger float-left" %>
+          <% end %>
 
-      <% else %>
-        <p></p>
-      <% end %></td>
-
+        <% else %>
+          <p></p>
+        <% end %></td>
+        </td>
+      <% end %>
+      </tr>
   <% end %>
   <div style="clear:both;"></div>
   </table>

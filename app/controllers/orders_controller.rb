@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    if current_user
+    if current_user 
       order = Order.create(user_id: current_user.id)
       cart.create_order_items(order)
       session.delete(:cart)

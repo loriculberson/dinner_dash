@@ -21,8 +21,6 @@ class TwilioNotifier
 
   def client 
      @client ||= Twilio::REST::Client.new(ENV['twilio_account_sid'], ENV['twilio_auth_token'])
-
-    # @client ||= Twilio::REST::Client.new(Rails.application.secrets[:twilio_account_sid], Rails.application.secrets[:twilio_auth_token])
   end
 end
 

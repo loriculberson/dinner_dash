@@ -75,7 +75,7 @@ describe "the cart view", type: :feature do
       end
 
       it "can create an order" do
-        expect(current_path).to eq(order_path(Order.first))
+        expect(current_path).to eq(order_path(Order.last))
       end
 
       it "creates an order when checking out" do
