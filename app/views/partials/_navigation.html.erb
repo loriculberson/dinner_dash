@@ -19,7 +19,7 @@
             <li><%= link_to "List Orders", admin_orders_path %></li>
             <li><%= link_to "Graph", graph_index_path %></li>
           <% end %>
-          <li><%= link_to "My Orders", orders_path(current_user) %></li>
+          <li><%= link_to "My Orders", orders_path %></li>
           <li><%= link_to current_user.email, current_user %></li>
           <li><%= link_to "Sign out", logout_path, method: :delete, class: "btn btn-danger", id: "sign-out" %></li>
         <% else %>
