@@ -31,7 +31,9 @@
         <td class="large-column"><%=link_to "Details", order, class: "btn btn-details float-left" %>
 
         <% if order.order_status == "Paid" %>
-          <%= form_for(order, url: admin_order_path(order)) do |f| %>
+
+          <%# link_to "Completed", admin_order_path(order, order: {status_id: 4}), method: :patch, class: "btn btn-success float-left" %>
+          <%= form_for(order, url: admin_order_path(order, order: {status_id: 4})) do |f| %>
             <%= f.hidden_field :status_id, value: 4 %>
             <%= f.submit "Completed", class: "btn btn-success float-left" %>
           <% end %>
@@ -43,6 +45,7 @@
 
 
         <% elsif order.order_status == "Ordered" %>
+
           <%= form_for(order, url: admin_order_path(order)) do |f| %>
             <%= f.hidden_field :status_id, value: 2 %>
             <%= f.submit "Paid", class: "btn btn-success float-left" %>
@@ -55,7 +58,8 @@
 
         <% else %>
           <p></p>
-        <% end %></td>
+        <% end %>
+        </td>
         </td>
       <% end %>
       </tr>
